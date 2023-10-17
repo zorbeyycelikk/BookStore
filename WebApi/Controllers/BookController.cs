@@ -67,20 +67,30 @@ public class BookController : ControllerBase
     }
     
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] Book request)
+    public IActionResult Put(int id, [FromBody] Book request)
     {
-        dbContext.Set<Book>().Update(request);
+        var entity = dbContext.Set<Book>().Find(id);
+        if (entity == null)
+        {
+            return NotFound("Book not found.");
+        }
+        entity.HeadLine = request.HeadLine;
         dbContext.SaveChanges();
+        return Ok();
     }
     
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public IActionResult Delete(int id)
     {
         var entity = dbContext.Set<Book>().Find(id);
+        if (entity == null)
+        {
+            return NotFound("Book not found.");
+        }
         entity.IsActive = false;
         entity.UpdateDate = DateTime.UtcNow;
-        dbContext.Set<Book>().Update(entity);
         dbContext.SaveChanges();
+        return Ok();
     }
 
 }
