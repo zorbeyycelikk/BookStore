@@ -3323,12 +3323,12 @@
     "Vk.Base/1.0.0": {
       "type": "project",
       "path": "../Vk.Base/Vk.Base.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
+      "msbuildProject": "../Vk.Base/Vk.Base.csproj"
     },
     "Vk.Data/1.0.0": {
       "type": "project",
       "path": "../Vk.Data/Vk.Data.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj"
+      "msbuildProject": "../Vk.Data/Vk.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
