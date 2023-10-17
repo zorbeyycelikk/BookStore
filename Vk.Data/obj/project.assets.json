@@ -2889,7 +2889,7 @@
     "Vk.Base/1.0.0": {
       "type": "project",
       "path": "../Vk.Base/Vk.Base.csproj",
-      "msbuildProject": "../Vk.Base/Vk.Base.csproj"
+      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
     }
   },
   "projectFileDependencyGroups": {
