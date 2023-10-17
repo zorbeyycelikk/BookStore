@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DA3015B8-0DF7-495E-9419-CD71067E2644}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk.Data", "Vk.Data\Vk.Data.csproj", "{5E8A405C-1FD1-447E-AAB4-7CB1603545C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk.Base", "Vk.Base\Vk.Base.csproj", "{3C01FB1E-6D40-45F5-8490-7C5641688E0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{DA3015B8-0DF7-495E-9419-CD71067E2644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA3015B8-0DF7-495E-9419-CD71067E2644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA3015B8-0DF7-495E-9419-CD71067E2644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8A405C-1FD1-447E-AAB4-7CB1603545C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8A405C-1FD1-447E-AAB4-7CB1603545C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8A405C-1FD1-447E-AAB4-7CB1603545C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8A405C-1FD1-447E-AAB4-7CB1603545C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C01FB1E-6D40-45F5-8490-7C5641688E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C01FB1E-6D40-45F5-8490-7C5641688E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C01FB1E-6D40-45F5-8490-7C5641688E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C01FB1E-6D40-45F5-8490-7C5641688E0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
