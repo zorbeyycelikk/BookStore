@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Vk.Data.Context;
+using Vk.Data.Uow;
 using Vk.Operation.Mapper;
 using Vk.Operation.Validation;
 
@@ -23,6 +24,9 @@ public class Startup
         // Database için bağlantı kodları
         string connection = Configuration.GetConnectionString("MsSqlConnection");
         services.AddDbContext<VkDbContext>(opts => opts.UseSqlServer(connection));
+        
+        // UnitOfWork Config
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         
         // Mapper Configuration
         var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MapperConfig()); });
