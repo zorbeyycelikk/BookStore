@@ -1,9 +1,12 @@
+using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Vk.Data.Context;
+using Vk.Operation.Mapper;
+using Vk.Operation.Validation;
 
 namespace VkApi;
-
 
 public class Startup
 {
@@ -21,6 +24,15 @@ public class Startup
         string connection = Configuration.GetConnectionString("MsSqlConnection");
         services.AddDbContext<VkDbContext>(opts => opts.UseSqlServer(connection));
         
+        // Mapper Configuration
+        var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MapperConfig()); });
+        services.AddSingleton(config.CreateMapper());
+        
+        // FluentValidation
+        services.AddControllers().AddFluentValidation(x =>
+        {
+            x.RegisterValidatorsFromAssemblyContaining<BaseValidator>();
+        });
         
         services.AddControllers();
         services.AddSwaggerGen(c =>

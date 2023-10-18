@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "ci/nVa5uYf9sBKaJJnr3854aSO2j2icwhRO0qZmFTi8HcYzi7f7K/p+bNSX8gxfrbASo4cBECO97gIDftkxeMA==",
+  "dgSpecHash": "ZS1QKJo7sZHFHHXI9Ps912xu7iOU3kjt0aUyFQ5o5Uye1noET0aT0LqzbBlZv3Vbs97GZ4/MX8HWzT1zH4GU8A==",
   "success": true,
   "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj",
   "expectedPackageFiles": [
     "/Users/zorbeycelik/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.1/fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mediatr/12.1.1/mediatr.12.1.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
