@@ -1,7 +1,8 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Vk.Data.Context;
-using Vk.Data.Domain;
+using Vk.Base.Response;
+using Vk.Operation.Cqrs;
+using Vk.Schema;
 
 namespace WebApi.Controllers;
 
@@ -10,36 +11,39 @@ namespace WebApi.Controllers;
 
 public class BookController : ControllerBase
 {
-    private readonly VkDbContext dbContext;
-    public BookController(VkDbContext dbContext)
+    private readonly IMediator _mediator;
+    public BookController(IMediator mediator)
     {
-        this.dbContext = dbContext;
+        this._mediator = mediator;
     }
     
     [HttpGet]
-    public List<Book> GetBooks()
+    public  async Task<ApiResponse<List<BookResponse>>> GetAll()
     { 
         try
         {
             this.HttpContext.Response.StatusCode = 200;
-            return dbContext.Set<Book>().AsNoTracking().ToList();
+            var operation = new GetAllBookQuery();
+            var result = await _mediator.Send(operation);
+            return result;
         }
         catch (Exception ex)
         {
             // Hata durumunda bir mesaj fırlat
-
             this.HttpContext.Response.StatusCode = 500;
             throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
         }
     }
     
     [HttpGet("{id}")]
-    public Book Get( [FromBody]int id)
+    public async Task<ApiResponse<BookResponse>> Get(int id)
     {
         try
         {
             this.HttpContext.Response.StatusCode = 200;
-            return dbContext.Set<Book>().Find(id);
+            var operation = new GetBookByIdQuery(id);
+            var result = await _mediator.Send(operation);
+            return result;
         }
         catch (Exception ex)
         {
@@ -48,49 +52,6 @@ public class BookController : ControllerBase
             this.HttpContext.Response.StatusCode = 500;
             throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
         }
-    }
-    
-    [HttpPost]
-    public void Post([FromBody] Book request)
-    {
-        try
-        {
-            dbContext.Set<Book>().Add(request); 
-            dbContext.SaveChanges();
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda bir mesaj fırlat
-            this.HttpContext.Response.StatusCode = 500;
-            throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
-        }
-    }
-    
-    [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] Book request)
-    {
-        var entity = dbContext.Set<Book>().Find(id);
-        if (entity == null)
-        {
-            return NotFound("Book not found.");
-        }
-        entity.HeadLine = request.HeadLine;
-        dbContext.SaveChanges();
-        return Ok();
-    }
-    
-    [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
-    {
-        var entity = dbContext.Set<Book>().Find(id);
-        if (entity == null)
-        {
-            return NotFound("Book not found.");
-        }
-        entity.IsActive = false;
-        entity.UpdateDate = DateTime.UtcNow;
-        dbContext.SaveChanges();
-        return Ok();
     }
 
 }

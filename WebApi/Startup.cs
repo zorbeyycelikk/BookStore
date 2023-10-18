@@ -1,9 +1,12 @@
+using System.Reflection;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Vk.Data.Context;
 using Vk.Data.Uow;
+using Vk.Operation.Cqrs;
 using Vk.Operation.Mapper;
 using Vk.Operation.Validation;
 
@@ -27,6 +30,9 @@ public class Startup
         
         // UnitOfWork Config
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        
+        //MediatR
+        services.AddMediatR(typeof(CreateBookCommand).GetTypeInfo().Assembly);
         
         // Mapper Configuration
         var config = new MapperConfiguration(cfg => { cfg.AddProfile(new MapperConfig()); });
