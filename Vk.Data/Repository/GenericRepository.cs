@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Model;
 using Vk.Data.Context;
 
+
 namespace Vk.Data.Repository;
 
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseModel
@@ -16,23 +17,38 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     }
     
     // List All
-    public List<TEntity> GetAll()
+    public async Task<List<TEntity>> GetAll(CancellationToken cancellationToken,params string[] includes)
     {
-       return dbContext.Set<TEntity>().AsNoTracking().ToList();
+        var entity = dbContext.Set<TEntity>().AsQueryable();
+        if (includes.Any())
+        {
+            entity = includes.Aggregate(entity, (current, incl) => current.Include(incl));
+        }
+        return await entity.ToListAsync(cancellationToken);
     }
     
     // List With Id
-    public TEntity GetById(int id)
+    public async Task<TEntity> GetById(int id,CancellationToken cancellationToken,params string[] includes)
     {
-        return dbContext.Set<TEntity>().Find(id);
+        var query = dbContext.Set<TEntity>().AsQueryable();
+        if (includes.Any())
+        {
+            query = includes.Aggregate(query, (current, incl) => current.Include(incl));
+        }
+        return await query.FirstOrDefaultAsync(x => x.Id == id,cancellationToken);
+
+        // return dbContext.Set<TEntity>().Find(id);
     }
     
     // Soft Delete All
-    public void Delete(TEntity entity)
+    public void DeleteAll()
     {
-        entity.IsActive = false;
-        entity.UpdateDate = DateTime.UtcNow;
-        dbContext.Set<TEntity>().Update(entity); 
+        List<TEntity> entities = dbContext.Set<TEntity>().ToList();
+        entities.ForEach(x =>
+        {
+            x.InsertDate = DateTime.UtcNow;
+            x.IsActive = true;
+        });
     }
 
     // Soft Delete With Id
@@ -58,25 +74,25 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     }
 
     // Update With Entity
-    public void Update(TEntity entity)
+    public async Task Update(int id, TEntity entity, CancellationToken cancellationToken)
     {
         dbContext.Set<TEntity>().Update(entity);
     }
 
     // Insert Entity
-    public void Insert(TEntity entity)
+    public void Insert(TEntity entity,CancellationToken cancellationToken)
     {
         entity.InsertDate = DateTime.Now;
-        dbContext.Set<TEntity>().Add(entity);    
+        dbContext.Set<TEntity>().AddAsync(entity,cancellationToken); 
     }
 
     // Insert List
-    public void InsertRange(List<TEntity> entities)
+    public void InsertRange(List<TEntity> entities,CancellationToken cancellationToken)
     {
         entities.ForEach(x =>
         {
             x.InsertDate = DateTime.UtcNow; 
         });
-        dbContext.Set<TEntity>().AddRange(entities);
+        dbContext.Set<TEntity>().AddRangeAsync(entities,cancellationToken);
     }
 }

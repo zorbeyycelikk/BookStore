@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
@@ -15,26 +16,33 @@ public class BookQueryHandler :
     
 {
    // private readonly VkDbContext dbContext;
+   private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
     private readonly IUnitOfWork unitOfWork;
 
-    public BookQueryHandler(VkDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
+    public BookQueryHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
     {
-        // this.dbContext = dbContext;
+        this.dbContext = dbContext;
         this.mapper = mapper;
         this.unitOfWork = unitOfWork;
     }
     
     public async Task<ApiResponse<List<BookResponse>>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
     {
-        List<Book> entity = unitOfWork.BookRepository.GetAll();
-        List<BookResponse> mapped = mapper.Map<List<BookResponse>>(entity);
+        List<Book> entities = await unitOfWork.BookRepository.GetAll(cancellationToken, "Author", "Category");
+       
+       /* List<Book> entity = await dbContext.Set<Book>()
+            .Include(x => x.Author)
+            .Include(x => x.Category)
+            .ToListAsync(cancellationToken);*/
+       
+        List<BookResponse> mapped = mapper.Map<List<BookResponse>>(entities);
         return new ApiResponse<List<BookResponse>>(mapped);
     }
 
     public async Task<ApiResponse<BookResponse>> Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
     {
-        var entity = unitOfWork.BookRepository.GetById(request.Id);
+        var entity = await unitOfWork.BookRepository.GetById(request.Id,cancellationToken,"Author","Category");
         BookResponse mapped = mapper.Map<BookResponse>(entity);
         return new ApiResponse<BookResponse>(mapped);
     }

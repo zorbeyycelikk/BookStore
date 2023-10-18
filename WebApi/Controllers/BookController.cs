@@ -11,10 +11,10 @@ namespace WebApi.Controllers;
 
 public class BookController : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator mediator;
     public BookController(IMediator mediator)
     {
-        this._mediator = mediator;
+        this.mediator = mediator;
     }
     
     [HttpGet]
@@ -24,7 +24,7 @@ public class BookController : ControllerBase
         {
             this.HttpContext.Response.StatusCode = 200;
             var operation = new GetAllBookQuery();
-            var result = await _mediator.Send(operation);
+            var result = await mediator.Send(operation);
             return result;
         }
         catch (Exception ex)
@@ -42,7 +42,7 @@ public class BookController : ControllerBase
         {
             this.HttpContext.Response.StatusCode = 200;
             var operation = new GetBookByIdQuery(id);
-            var result = await _mediator.Send(operation);
+            var result = await mediator.Send(operation);
             return result;
         }
         catch (Exception ex)
@@ -52,6 +52,30 @@ public class BookController : ControllerBase
             this.HttpContext.Response.StatusCode = 500;
             throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
         }
+    }
+    
+    [HttpPost]
+    public async Task<ApiResponse> Post([FromBody] BookCreateRequest request)
+    {
+        var operation = new CreateBookCommand(request);
+        var result = await mediator.Send(operation);
+        return result;
+    }
+    
+    [HttpDelete]
+    public async Task<ApiResponse> DeleteAll()
+    {
+        var operation = new DeleteBookAllCommand();
+        var result = await mediator.Send(operation);
+        return result;
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<ApiResponse> DeleteById(int id)
+    {
+        var operation = new DeleteBookCommand(id);
+        var result = await mediator.Send(operation);
+        return result;
     }
 
 }

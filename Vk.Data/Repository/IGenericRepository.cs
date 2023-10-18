@@ -5,14 +5,14 @@ namespace Vk.Data.Repository;
 
 public interface IGenericRepository<TEntity> where TEntity : BaseModel
 { 
-    TEntity GetById(int id);
-    List<TEntity> GetAll();
+    Task<TEntity> GetById(int id ,CancellationToken cancellationToken, params string[] includes);
+    Task<List<TEntity>> GetAll(CancellationToken cancellationToken ,params string[] includes);
     void Delete(int id);
-    void Delete(TEntity entity);
+    void DeleteAll();
     void Remove(int id);
     void Remove(TEntity entity);
-    void Update(TEntity entity);
-    void Insert(TEntity entity);
-    void InsertRange(List<TEntity> entities);
+    Task Update(int id, TEntity entity, CancellationToken cancellationToken);
+    void Insert(TEntity entity,CancellationToken cancellationToken);
+    void InsertRange(List<TEntity> entities,CancellationToken cancellationToken);
 
 }

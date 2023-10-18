@@ -26,6 +26,6 @@ public class BookResponse
     public string Publisher { get; set; }          // Yayin Evi
     public string ISNB { get; set; }               // Uluslararası Standart Kitap Numarasi
     
-    public int AuthorName { get; set; }              // Foreign Key From AuthorTable
-    public int CategoryName { get; set; }            // Foreign Key From CategoryTable
+    public string AuthorName { get; set; }              // Foreign Key From AuthorTable
+    public string CategoryName { get; set; }            // Foreign Key From CategoryTable
 }
