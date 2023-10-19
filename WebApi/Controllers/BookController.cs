@@ -36,7 +36,7 @@ public class BookController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public async Task<ApiResponse<BookResponse>> Get(int id)
+    public async Task<ApiResponse<BookResponse>> GetById(int id)
     {
         try
         {
@@ -55,7 +55,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<ApiResponse> Post([FromBody] BookCreateRequest request)
+    public async Task<ApiResponse<BookResponse>> Create([FromBody] BookCreateRequest request)
     {
         var operation = new CreateBookCommand(request);
         var result = await mediator.Send(operation);
@@ -74,6 +74,30 @@ public class BookController : ControllerBase
     public async Task<ApiResponse> DeleteById(int id)
     {
         var operation = new DeleteBookCommand(id);
+        var result = await mediator.Send(operation);
+        return result;
+    }
+    
+    [HttpDelete("HardDelete")]
+    public async Task<ApiResponse> HardDeleteAll()
+    {
+        var operation = new HardDeleteBookAllCommand();
+        var result = await mediator.Send(operation);
+        return result;
+    }
+    
+    [HttpDelete("HardDelete {id}")]
+    public async Task<ApiResponse> HardDeleteById(int id)
+    {
+        var operation = new HardDeleteBookCommand(id);
+        var result = await mediator.Send(operation);
+        return result;
+    }
+    
+    [HttpPut("{id}")]
+    public async Task<ApiResponse> Update(int id,[FromBody] BookUpdateRequest request)
+    {
+        var operation = new UpdateBookCommand(request, id);
         var result = await mediator.Send(operation);
         return result;
     }

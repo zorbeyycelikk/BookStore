@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
@@ -10,65 +11,102 @@ using Vk.Schema;
 namespace Vk.Operation.Command;
 
 public class BookCommandHandler :
-    IRequestHandler<CreateBookCommand, ApiResponse>,
-    IRequestHandler<CreateBookRangeCommand, ApiResponse<BookResponse>>,
+    IRequestHandler<CreateBookCommand, ApiResponse<BookResponse>>,
     IRequestHandler<DeleteBookCommand, ApiResponse>,
     IRequestHandler<DeleteBookAllCommand, ApiResponse>,
     IRequestHandler<HardDeleteBookCommand, ApiResponse>,
-    IRequestHandler<HardBookAllCommand, ApiResponse>,
+    IRequestHandler<HardDeleteBookAllCommand, ApiResponse>,
     IRequestHandler<UpdateBookCommand, ApiResponse>
 {
     // private readonly VkDbContext dbContext;
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly IUnitOfWork unitOfWork;
-
     public BookCommandHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
     {
-        this.dbContext = dbContext;
         this.mapper = mapper;
-        this.unitOfWork = unitOfWork;
+        this.dbContext = dbContext;
     }
-    public async Task<ApiResponse> Handle(CreateBookCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResponse<BookResponse>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
-        Book entity = mapper.Map<Book>(request.Model);
-        unitOfWork.BookRepository.Insert(entity,cancellationToken);
-        unitOfWork.CompleteTransaction();
-        return new ApiResponse("Create Command Succes !");
-    }
+        Book mapped = mapper.Map<Book>(request.Model);
+        mapped.InsertDate = DateTime.UtcNow;
+        
+        var entity = await dbContext.Set<Book>()
+            .AddAsync(mapped, cancellationToken);
+        
+        await dbContext.SaveChangesAsync(cancellationToken);
 
-    public Task<ApiResponse<BookResponse>> Handle(CreateBookRangeCommand request, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
+        BookResponse response = mapper.Map<BookResponse>(entity.Entity);
+        return new ApiResponse<BookResponse>(response);
     }
-
+    
+    
     public async Task<ApiResponse> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
-        unitOfWork.BookRepository.Delete(request.Id);
-        unitOfWork.Complete();
-        return new ApiResponse("DeleteById Basarili");
+        Book entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id);
+        if (entity == null)
+        {
+            return new ApiResponse("Record not found!");
+        }
+        entity.IsActive = false;
+        entity.UpdateDate = DateTime.UtcNow; 
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return new ApiResponse("Record Found And Delete Succes");
+
     }
 
     public async Task<ApiResponse> Handle(DeleteBookAllCommand request, CancellationToken cancellationToken)
     {
-        unitOfWork.BookRepository.DeleteAll();
-        unitOfWork.Complete();
-        return new ApiResponse("Delete All Basarili");
+        List<Book> entities = await dbContext.Set<Book>()
+            .Include(x => x.Author)
+            .Include(x => x.Category)
+            .ToListAsync(cancellationToken);
+        
+        entities.ForEach(x =>
+        {
+            x.InsertDate = DateTime.UtcNow;
+            x.IsActive = false;
+        });
+        dbContext.Set<Book>().UpdateRange(entities);
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return new ApiResponse("Record Found And Delete Succes");
+
     }
 
-    public Task<ApiResponse> Handle(HardDeleteBookCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResponse> Handle(HardDeleteBookCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        Book entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id);
+        if (entity == null)
+        {
+            return new ApiResponse("Record not found!");
+        }
+        dbContext.Set<Book>().Remove(entity);
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return new ApiResponse("Record Found And Delete Succes");
     }
 
-    public Task<ApiResponse> Handle(HardBookAllCommand request, CancellationToken cancellationToken)
+    public async Task<ApiResponse> Handle(HardDeleteBookAllCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        List<Book> entities = await dbContext.Set<Book>().Include(x => x.Author)
+            .Include(x => x.Category)
+            .ToListAsync();
+        if (entities == null)
+        {
+            return new ApiResponse("Records not found!");
+        }
+        
+        entities.ForEach(x =>
+        {
+            dbContext.Set<Book>().Remove(x);
+
+        });
+        await dbContext.SaveChangesAsync(cancellationToken);
+        return new ApiResponse("Record Found And Delete Succes");
     }
 
     public async Task<ApiResponse> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
-        var entity = await unitOfWork.BookRepository.GetById(request.Id,cancellationToken,"Author","Category");
+        var entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (entity == null)
         {
             return new ApiResponse("Record not found!");
@@ -76,8 +114,9 @@ public class BookCommandHandler :
         entity.BookNumber = request.Model.BookNumber;
         entity.PageCount = request.Model.PageCount;
         entity.Publisher = request.Model.Publisher;
-        unitOfWork.BookRepository.Update(request.Id, request.Model, cancellationToken);
-        unitOfWork.CompleteTransaction();
+        entity.UpdateDate = DateTime.UtcNow;
+        
+        await dbContext.SaveChangesAsync(cancellationToken);
         return new ApiResponse();
     }
 }

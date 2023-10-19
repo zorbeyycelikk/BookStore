@@ -9,7 +9,7 @@ public record GetBookByIdQuery(int Id) : IRequest<ApiResponse<BookResponse>>;
 public record DeleteBookCommand(int Id) : IRequest<ApiResponse>;
 public record DeleteBookAllCommand() : IRequest<ApiResponse>;
 public record HardDeleteBookCommand(int Id) : IRequest<ApiResponse>;
-public record HardBookAllCommand(int Id) : IRequest<ApiResponse>;
+public record HardDeleteBookAllCommand() : IRequest<ApiResponse>;
 public record UpdateBookCommand(BookUpdateRequest Model,int Id) : IRequest<ApiResponse>;
-public record CreateBookCommand(BookCreateRequest Model) : IRequest<ApiResponse>;
-public record CreateBookRangeCommand(BookCreateRequest Model) : IRequest<ApiResponse<BookResponse>>;
+public record CreateBookCommand(BookCreateRequest Model) : IRequest<ApiResponse<BookResponse>>;
+
