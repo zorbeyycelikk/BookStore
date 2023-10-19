@@ -30,11 +30,5 @@ class CategoryConfiguration : IEntityTypeConfiguration<Category>
         
         // Index
         builder.HasIndex(x => x.CategoryNumber).IsUnique(true);
-        
-        // Relation
-        builder.HasMany(x => x.Books)
-            .WithOne(x => x.Category)
-            .HasForeignKey(x => x.CategoryId)
-            .IsRequired(true);
     }
 }

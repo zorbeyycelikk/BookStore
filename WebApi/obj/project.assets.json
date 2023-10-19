@@ -3551,22 +3551,22 @@
     "Vk.Base/1.0.0": {
       "type": "project",
       "path": "../Vk.Base/Vk.Base.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
+      "msbuildProject": "../Vk.Base/Vk.Base.csproj"
     },
     "Vk.Data/1.0.0": {
       "type": "project",
       "path": "../Vk.Data/Vk.Data.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj"
+      "msbuildProject": "../Vk.Data/Vk.Data.csproj"
     },
     "Vk.Operation/1.0.0": {
       "type": "project",
       "path": "../Vk.Operation/Vk.Operation.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj"
+      "msbuildProject": "../Vk.Operation/Vk.Operation.csproj"
     },
     "Vk.Schema/1.0.0": {
       "type": "project",
       "path": "../Vk.Schema/Vk.Schema.csproj",
-      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Schema/Vk.Schema.csproj"
+      "msbuildProject": "../Vk.Schema/Vk.Schema.csproj"
     }
   },
   "projectFileDependencyGroups": {

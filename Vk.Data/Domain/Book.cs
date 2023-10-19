@@ -45,5 +45,19 @@ class BookConfiguration : IEntityTypeConfiguration<Book>
         // Index
         builder.HasIndex(x => x.BookNumber).IsUnique(true);
         builder.HasIndex(x => x.AuthorId).IsUnique(false);
+        
+        // Relations
+        
+        builder.HasOne(x => x.Category) // bir kitabın bir kategorisi olur
+            .WithMany(c => c.Books) // category'nin birden çok kitabı olabilir
+            .HasForeignKey(x => x.CategoryId)
+            .HasPrincipalKey(c => c.CategoryNumber)
+            .IsRequired(true);
+        
+        builder.HasOne(x => x.Author) // bir kitabın bir yazar ı olur
+            .WithMany(a => a.Books) // yazar'nin birden çok kitabı olabilir
+            .HasForeignKey(x => x.AuthorId)
+            .HasPrincipalKey(a => a.AuthorNumber)
+            .IsRequired(true);
     }
 }

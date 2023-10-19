@@ -7,3 +7,5 @@
 /Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/obj/Debug/net7.0/Vk.Base.dll
 /Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/obj/Debug/net7.0/refint/Vk.Base.dll
 /Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/obj/Debug/net7.0/Vk.Base.pdb
+/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/bin/Debug/net7.0/Vk.Base.deps.json
+/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/obj/Debug/net7.0/ref/Vk.Base.dll

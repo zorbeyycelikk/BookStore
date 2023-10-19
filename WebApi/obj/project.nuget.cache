@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "/X45oJxH8F3nguWGm3AIXtIEXSv6faUPFMU3JCKvrb1G87q/ypqV9lWWYubNlydKCSn7ayeLAHi8emFQvxNR5A==",
   "success": true,
-  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj",
+  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
     "/Users/zorbeycelik/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",

@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "uDHlwPef6oVeghONgGmh0uGl7GC+yIM51Vj8+96BibV1BYTiucaiZtbUgHQOxvw77ih8EYTL5qPcp2jOksOjyA==",
   "success": true,
-  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj",
+  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj",
   "expectedPackageFiles": [
     "/Users/zorbeycelik/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
