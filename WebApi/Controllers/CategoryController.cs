@@ -38,20 +38,9 @@ public class CategoryController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ApiResponse<CategoryResponse>> GetById(int id)
     {
-        try
-        {
-            this.HttpContext.Response.StatusCode = 200;
             var operation = new GetCategoryByIdQuery(id);
             var result = await mediator.Send(operation);
             return result;
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda bir mesaj fırlat
-
-            this.HttpContext.Response.StatusCode = 500;
-            throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
-        }
     }
     
     [HttpPost]

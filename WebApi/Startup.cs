@@ -68,49 +68,8 @@ public class Startup
 
         app.UseAuthorization();
 
-        app.UseHello();
-        // app.Run(); Middleware1 yazar fakat 2 çalışmaz.Run methodu kısa devre yaptırmaya yarar
-        // app.Run(async context => Console.WriteLine("Middleware1"));
-        // app.Run(async context => Console.WriteLine("Middleware2"));
-        
-        // app.Use(); next.ınvoke ile bir sonraki middleware'in çalışmasını sağlıyor.
-        // app.Use(async(context, next) =>
-        // {
-        //     Console.WriteLine("Middleware1 Basladi");
-        //     await next.Invoke();
-        //     Console.WriteLine("Middleware1 Bitti");
-        // });
-        // app.Use(async(context, next) =>
-        // {
-        //     Console.WriteLine("Middleware2 Basladi");
-        //     await next.Invoke();
-        //     Console.WriteLine("Middleware2 Bitti");
-        // });
-        // app.Use(async(context, next) =>
-        // {
-        //     Console.WriteLine("Middleware3 Basladi");
-        //     await next.Invoke();
-        //     Console.WriteLine("Middleware3 Bitti");
-        // });
-        //
-        // // /example ' a gidilince bu çalışır onun dışında çalışmaz
-        // app.Map("/example", internalApp => internalApp.Run(async context =>
-        // {
-        //     Console.WriteLine("Example middleware tetiklendi");
-        //     await context.Response.WriteAsync("Example middleware tetiklendi");
-        // }));
-        //
-        // // app.MapWhen() path ile ulaşrıız "GET" && X.REQUEST HTTP  FELAN YÖNETİLEBİLİR
-        // app.MapWhen(x => x.Request.Method == "GET" , 
-        //     internalApp =>
-        // {
-        //     internalApp.Run(async context =>
-        //     {
-        //         Console.WriteLine("MapWhen MiddleWare Tetiklendi");
-        //         await context.Response.WriteAsync("MapWhen MiddleWare Tetiklendi");
-        //     });
-        // });
-        //
+        app.UseCustomExcepciton();
+          
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uUubLAiiHg2Cs7uMNvY11cTckHNxK8SVgcEQaEFtp9ySyD2zX9kiivOWPa8clJSdgE7l50JpN4BwMZbF0GZ+Zw==",
+  "dgSpecHash": "+YA6FQlAtsaFNlwpX251tawPb8YDr3yjSHWP63hJf3JFlnMd8YXtUKGs7a6zpIE5FgOBCEJ+2+OTpHSwaXK+Yw==",
   "success": true,
   "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "/Users/zorbeycelik/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

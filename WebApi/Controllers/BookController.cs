@@ -20,38 +20,17 @@ public class BookController : ControllerBase
     [HttpGet]
     public  async Task<ApiResponse<List<BookResponse>>> GetAll()
     { 
-        try
-        {
-            this.HttpContext.Response.StatusCode = 200;
             var operation = new GetAllBookQuery();
             var result = await mediator.Send(operation);
             return result;
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda bir mesaj fırlat
-            this.HttpContext.Response.StatusCode = 500;
-            throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
-        }
     }
     
     [HttpGet("{id}")]
     public async Task<ApiResponse<BookResponse>> GetById(int id)
     {
-        try
-        {
-            this.HttpContext.Response.StatusCode = 200;
             var operation = new GetBookByIdQuery(id);
             var result = await mediator.Send(operation);
             return result;
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda bir mesaj fırlat
-
-            this.HttpContext.Response.StatusCode = 500;
-            throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
-        }
     }
     
     [HttpPost]
