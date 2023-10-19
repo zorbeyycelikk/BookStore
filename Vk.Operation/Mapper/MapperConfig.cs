@@ -23,5 +23,11 @@ public class MapperConfig : Profile
         CreateMap<AuthorCreateRequest, Author>();
         CreateMap<AuthorUpdateRequest, Author>();
         CreateMap<Author, AuthorResponse>();
+
+        CreateMap<UserCreateRequest, User>();
+        CreateMap<UserUpdateRequest, User>();
+        CreateMap<User, UserResponse>()
+            .ForMember(dest => dest.FullUserName, opt => opt
+                .MapFrom(src => src.FirstName + src.LastName));
     }
 }
