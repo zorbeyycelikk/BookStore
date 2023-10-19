@@ -1,11 +1,10 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.ComponentModel.DataAnnotations.Schema;
-using Vk.Base;
 using Vk.Base.Model;
 
-namespace Vk.Data.Domain;
 
+namespace Vk.Data.Domain;
 [Table("User", Schema = "dbo")]
 public class User : BaseModel
 {
@@ -20,7 +19,7 @@ public class User : BaseModel
 }
 
 
-public class CustomerConfigruration : IEntityTypeConfiguration<User>
+public class UserConfigruration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {

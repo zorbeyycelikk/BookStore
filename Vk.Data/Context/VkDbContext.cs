@@ -16,6 +16,7 @@ public class VkDbContext : DbContext
         modelBuilder.ApplyConfiguration(new AuthorConfiguration());
         modelBuilder.ApplyConfiguration(new BookConfiguration());
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfigruration());
         base.OnModelCreating(modelBuilder);
     }
 }

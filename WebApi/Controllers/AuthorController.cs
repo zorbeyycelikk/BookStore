@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vk.Base.Response;
 using Vk.Operation.Cqrs;
@@ -18,6 +19,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize(Roles = "Admin,User")]
     public  async Task<ApiResponse<List<AuthorResponse>>> GetAll()
     { 
             var operation = new GetAllAuthorQuery();
@@ -26,6 +28,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin,User")]
     public async Task<ApiResponse<AuthorResponse>> GetById(int id)
     {
             var operation = new GetAuthorByIdQuery(id);
@@ -34,6 +37,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse<AuthorResponse>> Create([FromBody] AuthorCreateRequest request)
     {
         var operation = new CreateAuthorCommand(request);
@@ -42,6 +46,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpDelete]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteAll()
     {
         var operation = new DeleteAuthorAllCommand();
@@ -50,6 +55,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteById(int id)
     {
         var operation = new DeleteAuthorCommand(id);
@@ -58,6 +64,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpDelete("HardDelete")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteAll()
     {
         var operation = new HardDeleteAuthorAllCommand();
@@ -66,6 +73,7 @@ public class AuthorController : ControllerBase
     }
     
     [HttpDelete("HardDelete {id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteById(int id)
     {
         var operation = new HardDeleteAuthorCommand(id);
@@ -74,11 +82,11 @@ public class AuthorController : ControllerBase
     }
     
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> Update(int id,[FromBody] AuthorUpdateRequest request)
     {
         var operation = new UpdateAuthorCommand(request, id);
         var result = await mediator.Send(operation);
         return result;
     }
-
 }

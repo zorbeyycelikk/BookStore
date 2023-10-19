@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vk.Base.Response;
 using Vk.Operation.Cqrs;
@@ -18,6 +19,7 @@ public class BookController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize(Roles = "Admin,User")]
     public  async Task<ApiResponse<List<BookResponse>>> GetAll()
     { 
             var operation = new GetAllBookQuery();
@@ -26,6 +28,7 @@ public class BookController : ControllerBase
     }
     
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin,User")]
     public async Task<ApiResponse<BookResponse>> GetById(int id)
     {
             var operation = new GetBookByIdQuery(id);
@@ -34,6 +37,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse<BookResponse>> Create([FromBody] BookCreateRequest request)
     {
         var operation = new CreateBookCommand(request);
@@ -42,6 +46,7 @@ public class BookController : ControllerBase
     }
     
     [HttpDelete]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteAll()
     {
         var operation = new DeleteBookAllCommand();
@@ -50,6 +55,7 @@ public class BookController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteById(int id)
     {
         var operation = new DeleteBookCommand(id);
@@ -58,6 +64,7 @@ public class BookController : ControllerBase
     }
     
     [HttpDelete("HardDelete")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteAll()
     {
         var operation = new HardDeleteBookAllCommand();
@@ -66,6 +73,7 @@ public class BookController : ControllerBase
     }
     
     [HttpDelete("HardDelete {id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteById(int id)
     {
         var operation = new HardDeleteBookCommand(id);
@@ -74,6 +82,7 @@ public class BookController : ControllerBase
     }
     
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> Update(int id,[FromBody] BookUpdateRequest request)
     {
         var operation = new UpdateBookCommand(request, id);

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Vk.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Son : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,6 +52,30 @@ namespace Vk.Data.Migrations
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.UniqueConstraint("AK_Categories_CategoryNumber", x => x.CategoryNumber);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserNumber = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    LastActivityDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PasswordRetryCount = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +154,10 @@ namespace Vk.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Books",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
+                name: "User",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

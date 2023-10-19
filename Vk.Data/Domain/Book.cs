@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Vk.Base.Model;
 
+
 namespace Vk.Data.Domain;
 
 [Table("Books", Schema = "dbo")]

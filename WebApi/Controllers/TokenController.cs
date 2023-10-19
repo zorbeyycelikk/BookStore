@@ -18,7 +18,7 @@ public class TokenController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<ApiResponse<TokenResponse>> Create([FromBody] TokenRequest request)
+    public async Task<ApiResponse<TokenResponse>> Create1([FromBody] TokenRequest request)
     {
         var operation = new CreateTokenCommand(request);
         var result = await mediator.Send(operation);

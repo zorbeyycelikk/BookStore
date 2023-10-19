@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vk.Base.Response;
 using Vk.Operation.Cqrs;
@@ -18,24 +19,16 @@ public class CategoryController : ControllerBase
     }
     
     [HttpGet]
+    [Authorize(Roles = "Admin,User")]
     public  async Task<ApiResponse<List<CategoryResponse>>> GetAll()
     { 
-        try
-        {
-            this.HttpContext.Response.StatusCode = 200;
             var operation = new GetAllCategoryQuery();
             var result = await mediator.Send(operation);
             return result;
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda bir mesaj fırlat
-            this.HttpContext.Response.StatusCode = 500;
-            throw new Exception("Veri çekme işlemi sırasında bir hata oluştu.", ex);
-        }
     }
     
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin,User")]
     public async Task<ApiResponse<CategoryResponse>> GetById(int id)
     {
             var operation = new GetCategoryByIdQuery(id);
@@ -44,6 +37,7 @@ public class CategoryController : ControllerBase
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse<CategoryResponse>> Create([FromBody] CategoryCreateRequest request)
     {
         var operation = new CreateCategoryCommand(request);
@@ -52,6 +46,7 @@ public class CategoryController : ControllerBase
     }
     
     [HttpDelete]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteAll()
     {
         var operation = new DeleteCategoryAllCommand();
@@ -60,6 +55,7 @@ public class CategoryController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> DeleteById(int id)
     {
         var operation = new DeleteCategoryCommand(id);
@@ -68,6 +64,7 @@ public class CategoryController : ControllerBase
     }
     
     [HttpDelete("HardDelete")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteAll()
     {
         var operation = new HardDeleteCategoryAllCommand();
@@ -76,6 +73,7 @@ public class CategoryController : ControllerBase
     }
     
     [HttpDelete("HardDelete {id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> HardDeleteById(int id)
     {
         var operation = new HardDeleteCategoryCommand(id);
@@ -84,11 +82,11 @@ public class CategoryController : ControllerBase
     }
     
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ApiResponse> Update(int id,[FromBody] CategoryUpdateRequest request)
     {
         var operation = new UpdateCategoryCommand(request, id);
         var result = await mediator.Send(operation);
         return result;
     }
-
 }

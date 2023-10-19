@@ -1,6 +1,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Vk.Base;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
@@ -28,8 +29,11 @@ public class UserCommandHandler :
     public async Task<ApiResponse<UserResponse>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         User mapped = mapper.Map<User>(request.Model);
-        mapped.InsertDate = DateTime.UtcNow;
         
+        var md5 = Md5.Create(request.Model.Password.ToUpper());
+        mapped.Password = md5;
+        mapped.InsertDate = DateTime.UtcNow;
+
         var entity = await dbContext.Set<User>()
             .AddAsync(mapped, cancellationToken);
         

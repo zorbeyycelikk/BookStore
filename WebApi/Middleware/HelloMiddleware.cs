@@ -1,4 +1,3 @@
-using Azure.Core;
 
 namespace WebApi.Middleware;
 
