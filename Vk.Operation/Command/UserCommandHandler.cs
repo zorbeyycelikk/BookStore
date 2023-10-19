@@ -65,7 +65,7 @@ public class UserCommandHandler :
         
         entities.ForEach(x =>
         {
-            x.InsertDate = DateTime.UtcNow;
+            x.UpdateDate = DateTime.UtcNow;
             x.IsActive = false;
         });
         dbContext.Set<User>().UpdateRange(entities);
@@ -114,8 +114,7 @@ public class UserCommandHandler :
         entity.FirstName = request.Model.FirstName;
         entity.LastName = request.Model.LastName;
         entity.Email = request.Model.Email;
-        entity.Password = request.Model.Password;
-
+        entity.Password = Md5.Create(request.Model.Password.ToUpper());
         entity.UpdateDate = DateTime.UtcNow;
         
         await dbContext.SaveChangesAsync(cancellationToken);
