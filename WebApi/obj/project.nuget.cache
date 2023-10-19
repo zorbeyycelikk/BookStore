@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+YA6FQlAtsaFNlwpX251tawPb8YDr3yjSHWP63hJf3JFlnMd8YXtUKGs7a6zpIE5FgOBCEJ+2+OTpHSwaXK+Yw==",
+  "dgSpecHash": "VSEaP/UtSL8zPJRA5YXaZ1BYJVUNP4qdxjHXmY5361FiaVhGV2AOEoOUm0SgAhNo5Y9jvrqzhr+ukAt4C5MsiA==",
   "success": true,
   "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "/Users/zorbeycelik/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mediatr/9.0.0/mediatr.9.0.0.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/mediatr.extensions.microsoft.dependencyinjection/9.0.0/mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.12/microsoft.aspnetcore.authentication.jwtbearer.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.aspnetcore.openapi/7.0.10/microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",

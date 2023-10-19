@@ -151,6 +151,25 @@
           "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.12": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.15.1"
+        },
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.OpenApi/7.0.10": {
         "type": "package",
         "dependencies": {
@@ -1471,6 +1490,21 @@
         "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll",
         "mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
         "mediatr.extensions.microsoft.dependencyinjection.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.12": {
+      "sha512": "KlSupL6h5oUwjMAoNJO2vp0MrqGYeO6nfdGjAEriK8xUccQndmQW9zQwF7d1R80abrZD/T9b01hmhk3v3LX05g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/7.0.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.7.0.12.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/7.0.10": {
@@ -3615,6 +3649,7 @@
       "AutoMapper >= 12.0.1",
       "FluentValidation >= 11.7.1",
       "FluentValidation.AspNetCore >= 11.3.0",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.12",
       "Microsoft.AspNetCore.OpenApi >= 7.0.10",
       "Microsoft.EntityFrameworkCore >= 7.0.12",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.12",
@@ -3623,6 +3658,7 @@
       "Swashbuckle.AspNetCore.Swagger >= 6.5.0",
       "Swashbuckle.AspNetCore.SwaggerUI >= 6.5.0",
       "Vk.Base >= 1.0.0",
+      "Vk.Data >= 1.0.0",
       "Vk.Operation >= 1.0.0",
       "Vk.Schema >= 1.0.0"
     ]
@@ -3655,6 +3691,9 @@
             "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj": {
               "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
             },
+            "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj": {
+              "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj"
+            },
             "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj": {
               "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj"
             },
@@ -3685,6 +3724,10 @@
           "FluentValidation.AspNetCore": {
             "target": "Package",
             "version": "[11.3.0, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[7.0.12, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
