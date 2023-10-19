@@ -18,7 +18,6 @@
           "Swashbuckle.AspNetCore.Swagger": "6.5.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.5.0",
           "Vk.Base": "1.0.0",
-          "Vk.Data": "1.0.0",
           "Vk.Operation": "1.0.0",
           "Vk.Schema": "1.0.0"
         },
@@ -701,6 +700,7 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR": "9.0.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.12",
           "Vk.Base": "1.0.0",
           "Vk.Data": "1.0.0",
           "Vk.Schema": "1.0.0"

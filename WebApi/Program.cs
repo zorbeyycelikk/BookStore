@@ -1,4 +1,4 @@
-namespace VkApi;
+namespace WebApi;
 
 public class Program
 {

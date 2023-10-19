@@ -20,10 +20,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
     </ItemGroup>
+    
 
     <ItemGroup>
       <ProjectReference Include="..\Vk.Base\Vk.Base.csproj" />
-      <ProjectReference Include="..\Vk.Data\Vk.Data.csproj" />
       <ProjectReference Include="..\Vk.Operation\Vk.Operation.csproj" />
       <ProjectReference Include="..\Vk.Schema\Vk.Schema.csproj" />
     </ItemGroup>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WKwYtnX1K20vWKg/DEzqBZKSRYm/g880KmXmVXgifSc0PYZgQ0owN2kP/hRPs/MqLKGPXZuUChXZVNNma1CV9w==",
+  "dgSpecHash": "Avq9gu8/EC+T0MhdbIRprXQt6FsYpGHO5Sh7DUHk0yG+H7lTy/shUHvOf2UBGp88O8TGR8OLuC8aVVkljs24sg==",
   "success": true,
-  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj",
+  "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj",
   "expectedPackageFiles": [
     "/Users/zorbeycelik/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",

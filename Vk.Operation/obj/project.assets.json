@@ -2846,17 +2846,17 @@
     "Vk.Base/1.0.0": {
       "type": "project",
       "path": "../Vk.Base/Vk.Base.csproj",
-      "msbuildProject": "../Vk.Base/Vk.Base.csproj"
+      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
     },
     "Vk.Data/1.0.0": {
       "type": "project",
       "path": "../Vk.Data/Vk.Data.csproj",
-      "msbuildProject": "../Vk.Data/Vk.Data.csproj"
+      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj"
     },
     "Vk.Schema/1.0.0": {
       "type": "project",
       "path": "../Vk.Schema/Vk.Schema.csproj",
-      "msbuildProject": "../Vk.Schema/Vk.Schema.csproj"
+      "msbuildProject": "../../../CohortÖdevler/BookStore/Vk.Schema/Vk.Schema.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2866,6 +2866,7 @@
       "FluentValidation.AspNetCore >= 11.3.0",
       "MediatR >= 9.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0",
+      "Microsoft.EntityFrameworkCore >= 7.0.12",
       "Vk.Base >= 1.0.0",
       "Vk.Data >= 1.0.0",
       "Vk.Schema >= 1.0.0"
@@ -2937,6 +2938,10 @@
           "MediatR.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[9.0.0, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.12, )"
           }
         },
         "imports": [
