@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk.Schema", "Vk.Schema\Vk.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk.Operation", "Vk.Operation\Vk.Operation.csproj", "{6967F1ED-3C60-4EC1-A270-5DD71ADEE8A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vk.UnitTest", "Vk.UnitTest\Vk.UnitTest.csproj", "{D29E410C-3898-41D8-93B8-66D4525464D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{6967F1ED-3C60-4EC1-A270-5DD71ADEE8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6967F1ED-3C60-4EC1-A270-5DD71ADEE8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6967F1ED-3C60-4EC1-A270-5DD71ADEE8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D29E410C-3898-41D8-93B8-66D4525464D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29E410C-3898-41D8-93B8-66D4525464D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29E410C-3898-41D8-93B8-66D4525464D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29E410C-3898-41D8-93B8-66D4525464D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
