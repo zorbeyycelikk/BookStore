@@ -1,0 +1,282 @@
+2023-10-20 12:26:52.998 [INF] App server is starting.
+2023-10-20 12:27:25.222 [INF] App server is starting.
+2023-10-20 12:27:43.476 [INF] App server is starting.
+2023-10-20 12:27:51.092 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:27:51.096 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:27:51.707 [INF] -------------Request-Begin------------
+2023-10-20 12:27:51.707 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+Request Body: 
+2023-10-20 12:27:51.707 [INF] 
+
+2023-10-20 12:27:51.708 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+StatusCode: 500 
+Response Body: {"error":"Object reference not set to an instance of an object."}
+2023-10-20 12:27:51.708 [INF] -------------Request-End------------
+2023-10-20 12:28:04.461 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:28:04.463 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:28:09.023 [INF] -------------Request-Begin------------
+2023-10-20 12:28:09.024 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+Request Body: {
+  "userNumber": 5555,
+  "password": "zorbeycelik"
+}
+2023-10-20 12:28:09.024 [INF] 
+
+2023-10-20 12:28:09.024 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+StatusCode: 200 
+Response Body: {"success":true,"message":"Success","response":{"expireDate":"2023-10-20T12:38:08.976002+03:00","token":"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjE3IiwiQ3VzdG9tZXJOdW1iZXIiOiI1NTU1IiwiUm9sZSI6IkFkbWluIiwiRW1haWwiOiJ6b3JiZXl5QGNlbGlray5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiWm9yYmV5LCBDZWxpayIsImV4cCI6MTY5Nzc5NDY4OCwiaXNzIjoiVmtBcGkiLCJhdWQiOiJWa0FwaSJ9.sjgQAvv8n-0azf6vNI29lzGuZndLjD9L2vnVkyNLF0w","email":"zorbeyy@celikk.com","userNumber":5555}}
+2023-10-20 12:28:09.024 [INF] -------------Request-End------------
+2023-10-20 12:28:26.071 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:28:26.072 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:28:26.252 [INF] -------------Request-Begin------------
+2023-10-20 12:28:26.253 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+Request Body: 
+2023-10-20 12:28:26.253 [INF] 
+
+2023-10-20 12:28:26.253 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+StatusCode: 200 
+Response Body: {"success":true,"message":"Success","response":{"userNumber":5555,"fullUserName":"ZorbeyCelik","email":"zorbeyy@celikk.com","role":"Admin"}}
+2023-10-20 12:28:26.253 [INF] -------------Request-End------------
+2023-10-20 12:42:58.937 [INF] App server is starting.
+2023-10-20 12:43:06.508 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:43:06.511 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:43:06.879 [INF] -------------Request-Begin------------
+2023-10-20 12:43:06.879 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+Request Body: 
+2023-10-20 12:43:06.880 [INF] 
+
+2023-10-20 12:43:06.880 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+StatusCode: 500 
+Response Body: {"error":"Object reference not set to an instance of an object."}
+2023-10-20 12:43:06.880 [INF] -------------Request-End------------
+2023-10-20 12:43:34.495 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:43:34.498 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:43:37.132 [INF] -------------Request-Begin------------
+2023-10-20 12:43:37.132 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+Request Body: {
+  "userNumber": 5555,
+  "password": "zorbeycelik"
+}
+2023-10-20 12:43:37.132 [INF] 
+
+2023-10-20 12:43:37.132 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+StatusCode: 200 
+Response Body: {"success":true,"message":"Success","response":{"expireDate":"2023-10-20T12:53:37.098998+03:00","token":"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjE3IiwiQ3VzdG9tZXJOdW1iZXIiOiI1NTU1IiwiUm9sZSI6IkFkbWluIiwiRW1haWwiOiJ6b3JiZXl5QGNlbGlray5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiWm9yYmV5LCBDZWxpayIsImV4cCI6MTY5Nzc5NTYxNiwiaXNzIjoiVmtBcGkiLCJhdWQiOiJWa0FwaSJ9.xtx9q_QRcgdEBvxIwKNWx36SiVZJEeO7xYBx4a2rVb8","email":"zorbeyy@celikk.com","userNumber":5555}}
+2023-10-20 12:43:37.132 [INF] -------------Request-End------------
+2023-10-20 12:43:51.941 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:43:51.943 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:43:52.103 [INF] -------------Request-Begin------------
+2023-10-20 12:43:52.104 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+Request Body: 
+2023-10-20 12:43:52.104 [INF] 
+
+2023-10-20 12:43:52.104 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+StatusCode: 204 
+Response Body: 
+2023-10-20 12:43:52.104 [INF] -------------Request-End------------
+2023-10-20 12:44:21.676 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:44:21.678 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:44:21.805 [INF] -------------Request-Begin------------
+2023-10-20 12:44:21.806 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+Request Body: 
+2023-10-20 12:44:21.806 [INF] 
+
+2023-10-20 12:44:21.806 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /SessionUsers 
+QueryString:  
+StatusCode: 500 
+Response Body: {"error":"Object reference not set to an instance of an object."}
+2023-10-20 12:44:21.806 [INF] -------------Request-End------------
+2023-10-20 12:45:18.708 [INF] App server is starting.
+2023-10-20 12:45:36.801 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:45:36.805 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:45:39.616 [INF] -------------Request-Begin------------
+2023-10-20 12:45:39.616 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books 
+QueryString:  
+Request Body: 
+2023-10-20 12:45:39.616 [INF] 
+
+2023-10-20 12:45:39.617 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books 
+QueryString:  
+StatusCode: 204 
+Response Body: 
+2023-10-20 12:45:39.617 [INF] -------------Request-End------------
+2023-10-20 12:47:20.232 [INF] App server is starting.
+2023-10-20 12:47:36.283 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:47:36.289 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:47:38.969 [INF] -------------Request-Begin------------
+2023-10-20 12:47:38.969 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+Request Body: {
+  "userNumber": 5555,
+  "password": "zorbeycelik"
+}
+2023-10-20 12:47:38.969 [INF] 
+
+2023-10-20 12:47:38.970 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+StatusCode: 200 
+Response Body: {"success":true,"message":"Success","response":{"expireDate":"2023-10-20T12:57:38.931689+03:00","token":"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjE3IiwiQ3VzdG9tZXJOdW1iZXIiOiI1NTU1IiwiUm9sZSI6IkFkbWluIiwiRW1haWwiOiJ6b3JiZXl5QGNlbGlray5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiWm9yYmV5LCBDZWxpayIsImV4cCI6MTY5Nzc5NTg1OCwiaXNzIjoiVmtBcGkiLCJhdWQiOiJWa0FwaSJ9.vgFo_YcpWX3OeQTfiLVgI_kwhi9jYZw28IDy_2rVeh8","email":"zorbeyy@celikk.com","userNumber":5555}}
+2023-10-20 12:47:38.970 [INF] -------------Request-End------------
+2023-10-20 12:47:55.442 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:47:55.443 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:47:55.757 [INF] -------------Request-Begin------------
+2023-10-20 12:47:55.758 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/30 
+QueryString:  
+Request Body: 
+2023-10-20 12:47:55.758 [INF] 
+
+2023-10-20 12:47:55.758 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/30 
+QueryString:  
+StatusCode: 400 
+Response Body: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"Bad Request","status":400,"traceId":"00-351ce78d30a7ebe3de7638c51ad4f225-85d904f22f54faed-00"}
+2023-10-20 12:47:55.758 [INF] -------------Request-End------------
+2023-10-20 12:48:25.464 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:48:25.466 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:48:25.641 [INF] -------------Request-Begin------------
+2023-10-20 12:48:25.641 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/12 
+QueryString:  
+Request Body: 
+2023-10-20 12:48:25.641 [INF] 
+
+2023-10-20 12:48:25.641 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/12 
+QueryString:  
+StatusCode: 200 
+Response Body: {"bookNumber":11,"headLine":"Quantum Leaps in Science","pageCount":330,"publisher":"Scientific Discoveries Press","isnb":"1234509876543","authorName":"John","categoryName":"Travel"}
+2023-10-20 12:48:25.641 [INF] -------------Request-End------------
+2023-10-20 12:56:05.921 [INF] App server is starting.
+2023-10-20 12:56:14.768 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:56:14.773 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:56:17.188 [INF] -------------Request-Begin------------
+2023-10-20 12:56:17.189 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/1 
+QueryString:  
+Request Body: 
+2023-10-20 12:56:17.189 [INF] 
+
+2023-10-20 12:56:17.189 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/1 
+QueryString:  
+StatusCode: 404 
+Response Body: {"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-bd1385a7bd4ec785d83acece0a4a64ef-abf8c18a935d0e8f-00"}
+2023-10-20 12:56:17.189 [INF] -------------Request-End------------
+2023-10-20 12:56:27.748 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:56:27.751 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:56:27.935 [INF] -------------Request-Begin------------
+2023-10-20 12:56:27.936 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/15 
+QueryString:  
+Request Body: 
+2023-10-20 12:56:27.936 [INF] 
+
+2023-10-20 12:56:27.936 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/15 
+QueryString:  
+StatusCode: 200 
+Response Body: {"bookNumber":14,"headLine":"Wanderlust Chronicles","pageCount":300,"publisher":"Travel Journals","isnb":"4560987654321","authorName":"Michael","categoryName":"Horror"}
+2023-10-20 12:56:27.936 [INF] -------------Request-End------------
+2023-10-20 12:56:34.644 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 12:56:34.646 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 12:56:34.673 [INF] -------------Request-Begin------------
+2023-10-20 12:56:34.673 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/2 
+QueryString:  
+Request Body: 
+2023-10-20 12:56:34.673 [INF] 
+
+2023-10-20 12:56:34.673 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books/2 
+QueryString:  
+StatusCode: 200 
+Response Body: {"bookNumber":1,"headLine":"Epic Journey of the Phoenix","pageCount":300,"publisher":"Adventure Books Publishing","isnb":"1234567890123","authorName":"Emma","categoryName":"Self-Help"}
+2023-10-20 12:56:34.674 [INF] -------------Request-End------------

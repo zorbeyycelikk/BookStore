@@ -20,20 +20,20 @@ public class BookController : ControllerBase
     
     [HttpGet]
     [Authorize(Roles = "Admin,User")]
-    public  async Task<ApiResponse<List<BookResponse>>> GetAll()
+    public  async Task <IActionResult> GetAll()
     { 
             var operation = new GetAllBookQuery();
             var result = await mediator.Send(operation);
-            return result;
+            return result.Success ? Ok(result.Response) : result.Message == "Record not found" ? NotFound() : BadRequest();
     }
     
     [HttpGet("{id}")]
     [Authorize(Roles = "Admin,User")]
-    public async Task<ApiResponse<BookResponse>> GetById(int id)
+    public async Task <IActionResult> GetById(int id)
     {
             var operation = new GetBookByIdQuery(id);
             var result = await mediator.Send(operation);
-            return result;
+            return result.Success ? Ok(result.Response) : result.Message == "Record not found" ? NotFound() : BadRequest();
     }
     
     [HttpPost]

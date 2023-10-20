@@ -29,8 +29,6 @@ public class BookQueryHandler :
     
     public async Task<ApiResponse<List<BookResponse>>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
     {
-        // List<Book> entities = await unitOfWork.BookRepository.GetAll(cancellationToken, "Author", "Category");
-       
         List<Book> entities = await dbContext.Set<Book>()
             .Include(x => x.Author)
             .Include(x => x.Category)
@@ -50,7 +48,7 @@ public class BookQueryHandler :
         
         if (entity == null)
         {
-            return new ApiResponse<BookResponse>("Record not found!");
+            return new ApiResponse<BookResponse>("Record not found");
         }
 
         BookResponse mapped = mapper.Map<BookResponse>(entity);

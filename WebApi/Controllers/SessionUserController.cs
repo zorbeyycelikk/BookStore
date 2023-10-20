@@ -19,11 +19,11 @@ public class SessionUserController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<ApiResponse<UserResponse>> GetSessionInfo()
+    public async Task <IActionResult> GetSessionInfo()
     {
             var id = (User.Identity as ClaimsIdentity).FindFirst("Id").Value;
             var operation = new GetSessionUserByIdQuery(int.Parse(id));
             var result = await mediator.Send(operation);
-            return result;
+            return result.Success ? NoContent() : result.Message == "Record not found" ? NotFound() : BadRequest();
     }
 }
