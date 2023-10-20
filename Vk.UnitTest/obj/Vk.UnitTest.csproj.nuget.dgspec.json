@@ -322,6 +322,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj": {
+                "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj"
+              },
               "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj": {
                 "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/WebApi/WebApi.csproj"
               }
@@ -341,6 +344,14 @@
             "FluentAssertions": {
               "target": "Package",
               "version": "[6.12.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.12, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",

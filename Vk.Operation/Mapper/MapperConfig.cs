@@ -8,7 +8,7 @@ public class MapperConfig : Profile
 {
     public MapperConfig()
     {
-        CreateMap<BookCreateRequest, Book>();
+        CreateMap<BookCreateRequest, Book>().ReverseMap();
         CreateMap<BookUpdateRequest, Book>();
         CreateMap<Book, BookResponse>()
             .ForMember(dest => dest.AuthorName, opt => opt

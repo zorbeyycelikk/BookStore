@@ -22,5 +22,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Vk.Base\Vk.Base.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="bin\Debug\net7.0\Vk.Data.dll" />
+    </ItemGroup>
 
 </Project>

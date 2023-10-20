@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VHORDY9Pe0bRKP/HEGEmj7QT3Jicw0F755PYwHAc777Gss9MGY0KAbdJydDXGsSRxaCb6J1fDnf3hYp9wqw5+g==",
+  "dgSpecHash": "Y9HMKr8qfMtUMoKNQxK2mMCin29aafw+mfID+YL+4ZuN3i+/tazm6oqmnkHwJ3wYJRFhxy/7VdcTtbrMVNKbjw==",
   "success": true,
   "projectFilePath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.UnitTest/Vk.UnitTest.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore/7.0.12/microsoft.entityframeworkcore.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.12/microsoft.entityframeworkcore.abstractions.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.12/microsoft.entityframeworkcore.analyzers.7.0.12.nupkg.sha512",
+    "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.12/microsoft.entityframeworkcore.inmemory.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.12/microsoft.entityframeworkcore.relational.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.12/microsoft.entityframeworkcore.sqlserver.7.0.12.nupkg.sha512",
     "/Users/zorbeycelik/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

@@ -20,6 +20,10 @@
       <ProjectReference Include="..\Vk.Data\Vk.Data.csproj" />
       <ProjectReference Include="..\Vk.Schema\Vk.Schema.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="bin\Debug\net7.0\Vk.Operation.dll" />
+    </ItemGroup>
     
 
 </Project>

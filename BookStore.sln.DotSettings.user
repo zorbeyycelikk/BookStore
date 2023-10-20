@@ -3,13 +3,16 @@
   &lt;Assembly Path="/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/bin/Debug/net7.0/Vk.Base.dll" /&gt;
   &lt;Assembly Path="/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/bin/Debug/net7.0/Vk.Data.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=36f3aa27_002D9583_002D406a_002D9e71_002D3777d57bc2c3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fff79760_002D2058_002D4e79_002Db7e0_002D227b28d863a3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WhenAlreadyExistBookNumberIsGiven_InvalidOperationException_ShouldBeReturn" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::D29E410C-3898-41D8-93B8-66D4525464D1::net7.0::Vk.UnitTest.UnitTest1.Test1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D29E410C-3898-41D8-93B8-66D4525464D1::net7.0::Vk.UnitTest.Operations.Command.BookCommandTest.CreateBookCommandTest.WhenAlreadyExistBookNumberIsGiven_InvalidOperationException_ShouldBeReturn&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=456191d5_002D62d6_002D449b_002Dba5e_002Daa2578318987/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::D29E410C-3898-41D8-93B8-66D4525464D1::net7.0::Vk.UnitTest.UnitTest1.Test1&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	
+	
+	
+	
+	
+	
+	
+	</wpf:ResourceDictionary>

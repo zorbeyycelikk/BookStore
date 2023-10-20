@@ -38,7 +38,7 @@ public class UserController : ControllerBase
     
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse<UserResponse>> Create([FromBody] UserCreateRequest request)
+    public async Task<ApiResponse<UserResponse>> Create2([FromBody] UserCreateRequest request)
     {
         var operation = new CreateUserCommand(request);
         var result = await mediator.Send(operation);

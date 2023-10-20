@@ -29,7 +29,7 @@ public class BookController : ControllerBase
     
     [HttpGet("{id}")]
     [Authorize(Roles = "Admin,User")]
-    public async Task <IActionResult> GetById(int id)
+    public async Task <IActionResult>  GetById(int id)
     {
             var operation = new GetBookByIdQuery(id);
             var result = await mediator.Send(operation);

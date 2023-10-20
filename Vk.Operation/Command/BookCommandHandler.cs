@@ -7,10 +7,11 @@ using Vk.Data.Domain;
 using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
+using InvalidOperationException = System.InvalidOperationException;
 
 namespace Vk.Operation.Command;
 
-public class BookCommandHandler :
+public class  BookCommandHandler :
     IRequestHandler<CreateBookCommand, ApiResponse<BookResponse>>,
     IRequestHandler<DeleteBookCommand, ApiResponse>,
     IRequestHandler<DeleteBookAllCommand, ApiResponse>,
@@ -21,19 +22,24 @@ public class BookCommandHandler :
     // private readonly VkDbContext dbContext;
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    public BookCommandHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public BookCommandHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.mapper = mapper;
         this.dbContext = dbContext;
     }
     public async Task<ApiResponse<BookResponse>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
+        Book result = dbContext.Set<Book>().SingleOrDefault(x => x.BookNumber == request.Model.BookNumber);
+        
+        if (result is not null)
+        {
+            throw new InvalidOperationException("Kitap zaten mevcut.");
+        }
+        
         Book mapped = mapper.Map<Book>(request.Model);
         mapped.InsertDate = DateTime.UtcNow;
         
-        var entity = await dbContext.Set<Book>()
-            .AddAsync(mapped, cancellationToken);
-        
+        var entity = await dbContext.Set<Book>().AddAsync(mapped, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
 
         BookResponse response = mapper.Map<BookResponse>(entity.Entity);

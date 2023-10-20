@@ -280,3 +280,55 @@ QueryString:
 StatusCode: 200 
 Response Body: {"bookNumber":1,"headLine":"Epic Journey of the Phoenix","pageCount":300,"publisher":"Adventure Books Publishing","isnb":"1234567890123","authorName":"Emma","categoryName":"Self-Help"}
 2023-10-20 12:56:34.674 [INF] -------------Request-End------------
+2023-10-20 16:01:12.816 [INF] App server is starting.
+2023-10-20 17:19:10.148 [INF] App server is starting.
+2023-10-20 17:19:25.720 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 17:19:25.725 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 17:19:30.677 [INF] -------------Request-Begin------------
+2023-10-20 17:19:30.679 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+Request Body: {
+  "userNumber": 5555,
+  "password": "zorbeycelik"
+}
+2023-10-20 17:19:30.679 [INF] 
+
+2023-10-20 17:19:30.679 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Tokens 
+QueryString:  
+StatusCode: 200 
+Response Body: {"success":true,"message":"Success","response":{"expireDate":"2023-10-20T17:29:30.598245+03:00","token":"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjE3IiwiQ3VzdG9tZXJOdW1iZXIiOiI1NTU1IiwiUm9sZSI6IkFkbWluIiwiRW1haWwiOiJ6b3JiZXl5QGNlbGlray5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiWm9yYmV5LCBDZWxpayIsImV4cCI6MTY5NzgxMjE3MCwiaXNzIjoiVmtBcGkiLCJhdWQiOiJWa0FwaSJ9.L7rHwGBwV7n51dDWywAQxxGDi5MQGEDpPt2tr3iq8ZQ","email":"zorbeyy@celikk.com","userNumber":5555}}
+2023-10-20 17:19:30.680 [INF] -------------Request-End------------
+2023-10-20 17:20:09.046 [INF] LogErrorHandlerMiddleware.Invoke
+2023-10-20 17:20:09.049 [INF] LogRequestLoggingMiddleware.Invoke
+2023-10-20 17:20:09.637 [INF] -------------Request-Begin------------
+2023-10-20 17:20:09.638 [INF] Http Request Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books 
+QueryString:  
+Request Body: {
+  "bookNumber": 1,
+  "headLine": "ssss",
+  "pageCount": 3333,
+  "publisher": "ssssss",
+  "isnb": "4444343",
+  "authorId": 5,
+  "categoryId": 5
+}
+2023-10-20 17:20:09.638 [INF] 
+
+2023-10-20 17:20:09.638 [INF] Http Response Information: 
+Schema:https 
+Host: localhost:7066 
+Path: /Books 
+QueryString:  
+StatusCode: 500 
+Response Body: {"error":"Book has been created"}
+2023-10-20 17:20:09.638 [INF] -------------Request-End------------
+2023-10-20 17:55:53.210 [INF] App server is starting.
