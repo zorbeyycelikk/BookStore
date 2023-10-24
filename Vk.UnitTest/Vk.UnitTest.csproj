@@ -27,12 +27,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Vk.Base\Vk.Base.csproj" />
+      <ProjectReference Include="..\Vk.Data\Vk.Data.csproj" />
       <ProjectReference Include="..\Vk.Operation\Vk.Operation.csproj" />
       <ProjectReference Include="..\WebApi\WebApi.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Operations\Query\" />
     </ItemGroup>
 
 </Project>

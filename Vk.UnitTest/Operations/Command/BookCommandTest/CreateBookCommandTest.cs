@@ -1,6 +1,6 @@
 using AutoMapper;
 using FluentAssertions;
-using Moq;
+using MediatR;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
@@ -13,11 +13,8 @@ namespace Vk.UnitTest.Operations.Command.BookCommandTest;
 //CommonTextFixture'nin sağlamış olduğu mapper ve dbcontext'e erişim sağlar
 public class CreateBookCommandTest : IClassFixture<CommonTextFixture>
 {
-    // private readonly Mock<VkDbContext> dbContext;
-    // private readonly Mock<IMapper> mapper;
-    
      private readonly VkDbContext dbContext;
-    private readonly IMapper mapper;
+     private readonly IMapper mapper;
     
      public CreateBookCommandTest(CommonTextFixture textFixture)
      {
@@ -26,7 +23,7 @@ public class CreateBookCommandTest : IClassFixture<CommonTextFixture>
      }
     
     [Fact]
-    public void WhenAlreadyExistBookNumberIsGiven_InvalidOperationException_ShouldBeReturn()
+    public async void WhenAlreadyExistBookNumberIsGivenToCreateBook_ResponseMessageError_ShouldBeReturn()
     {
         // arrange( hazırlık)
             // Test aşamasında bir data yaratsın ve bitince silmesi için bunu yarattık
@@ -40,14 +37,13 @@ public class CreateBookCommandTest : IClassFixture<CommonTextFixture>
         dbContext.SaveChanges();
         
         // act(çalıştırma)
-        var command = new BookCommandHandler(mapper, dbContext);
+        var handler = new BookCommandHandler(mapper, dbContext);
         BookCreateRequest mapped = mapper.Map<BookCreateRequest>(book);
-        var x = new CreateBookCommand(mapped);
+        var operation = new CreateBookCommand(mapped);
+        var result = await handler.Handle(operation, default);
         
         // assert(dogrulama)
-        FluentActions
-            .Invoking(() => command.Handle(x, default))
-            .Should().ThrowAsync<InvalidOperationException>().WithMessage("Kitap zaten mevcut.");
+        result.Message.Should().Be("Error");
         
         /*Mantik tam olarak şu.
          * Arrange kısmında bir book nesnesi oluşturuyorum.Bunun amacı oluşturduğum inline db'deki veriye kendim fiziksel

@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -18,10 +17,9 @@ public class CategoryCommandHandler :
     IRequestHandler<HardDeleteCategoryAllCommand, ApiResponse>,
     IRequestHandler<UpdateCategoryCommand, ApiResponse>
 {
-    // private readonly VkDbContext dbContext;
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    public CategoryCommandHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public CategoryCommandHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.mapper = mapper;
         this.dbContext = dbContext;

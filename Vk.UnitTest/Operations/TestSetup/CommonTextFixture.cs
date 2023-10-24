@@ -1,4 +1,5 @@
 using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Vk.Data.Context;
 using Vk.Operation.Mapper;
@@ -11,6 +12,9 @@ public class CommonTextFixture
     public VkDbContext dbContext { get; set; }
     
     public IMapper Mapper { get; set; }
+    
+    public IMediator mediator{ get; set; }
+
 
     public CommonTextFixture()
     {
@@ -29,6 +33,8 @@ public class CommonTextFixture
         {
             cfg.AddProfile<MapperConfig>();
         }).CreateMapper();
+        
+        // MediatR
     }
 
 }

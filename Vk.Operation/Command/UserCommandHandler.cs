@@ -5,7 +5,6 @@ using Vk.Base;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -21,7 +20,7 @@ public class UserCommandHandler :
 {
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    public UserCommandHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public UserCommandHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.mapper = mapper;
         this.dbContext = dbContext;

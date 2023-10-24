@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -18,16 +17,22 @@ public class AuthorCommandHandler :
     IRequestHandler<HardDeleteAuthorAllCommand, ApiResponse>,
     IRequestHandler<UpdateAuthorCommand, ApiResponse>
 {
-    // private readonly VkDbContext dbContext;
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    public AuthorCommandHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public AuthorCommandHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.mapper = mapper;
         this.dbContext = dbContext;
     }
     public async Task<ApiResponse<AuthorResponse>> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
     {
+        Author result = dbContext.Set<Author>().SingleOrDefault(x => x.AuthorNumber == request.Model.AuthorNumber);
+        
+        if (result is not null)
+        {
+            return new ApiResponse<AuthorResponse>("Error");
+        }
+        
         Author mapped = mapper.Map<Author>(request.Model);
         mapped.InsertDate = DateTime.UtcNow;
         
@@ -53,7 +58,7 @@ public class AuthorCommandHandler :
         await dbContext.SaveChangesAsync(cancellationToken);
         return new ApiResponse();
 
-    }
+    }  
 
     public async Task<ApiResponse> Handle(DeleteAuthorAllCommand request, CancellationToken cancellationToken)
     {

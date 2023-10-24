@@ -20,7 +20,7 @@ public class MapperConfig : Profile
         CreateMap<CategoryUpdateRequest, Category>();
         CreateMap<Category, CategoryResponse>();
         
-        CreateMap<AuthorCreateRequest, Author>();
+        CreateMap<AuthorCreateRequest, Author>().ReverseMap();
         CreateMap<AuthorUpdateRequest, Author>();
         CreateMap<Author, AuthorResponse>();
 
