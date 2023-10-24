@@ -322,6 +322,12 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj": {
+                "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Base/Vk.Base.csproj"
+              },
+              "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj": {
+                "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Data/Vk.Data.csproj"
+              },
               "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj": {
                 "projectPath": "/Users/zorbeycelik/Documents/Patika.Dev/CohortÖdevler/BookStore/Vk.Operation/Vk.Operation.csproj"
               },

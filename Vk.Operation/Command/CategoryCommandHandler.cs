@@ -28,6 +28,14 @@ public class CategoryCommandHandler :
     }
     public async Task<ApiResponse<CategoryResponse>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
+        
+        Category result = dbContext.Set<Category>().SingleOrDefault(x => x.CategoryNumber == request.Model.CategoryNumber);
+        
+        if (result is not null)
+        {
+            return new ApiResponse<CategoryResponse>("Error");
+        }
+        
         Category mapped = mapper.Map<Category>(request.Model);
         mapped.InsertDate = DateTime.UtcNow;
         
@@ -46,12 +54,12 @@ public class CategoryCommandHandler :
         Category entity = await dbContext.Set<Category>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.IsActive = false;
         entity.UpdateDate = DateTime.UtcNow; 
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -67,7 +75,7 @@ public class CategoryCommandHandler :
         });
         dbContext.Set<Category>().UpdateRange(entities);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -76,11 +84,11 @@ public class CategoryCommandHandler :
         Category entity = await dbContext.Set<Category>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         dbContext.Set<Category>().Remove(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(HardDeleteCategoryAllCommand request, CancellationToken cancellationToken)
@@ -89,7 +97,7 @@ public class CategoryCommandHandler :
             .ToListAsync();
         if (entities == null)
         {
-            return new ApiResponse("Records not found!");
+            return new ApiResponse("Error");
         }
         
         entities.ForEach(x =>
@@ -98,7 +106,7 @@ public class CategoryCommandHandler :
 
         });
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
@@ -106,7 +114,7 @@ public class CategoryCommandHandler :
         var entity = await dbContext.Set<Category>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.CategoryName = request.Model.CategoryName;
         entity.UpdateDate = DateTime.UtcNow;

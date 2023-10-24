@@ -46,12 +46,12 @@ public class AuthorCommandHandler :
         Author entity = await dbContext.Set<Author>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.IsActive = false;
         entity.UpdateDate = DateTime.UtcNow; 
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -67,7 +67,7 @@ public class AuthorCommandHandler :
         });
         dbContext.Set<Author>().UpdateRange(entities);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -76,11 +76,11 @@ public class AuthorCommandHandler :
         Author entity = await dbContext.Set<Author>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         dbContext.Set<Author>().Remove(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(HardDeleteAuthorAllCommand request, CancellationToken cancellationToken)
@@ -89,7 +89,7 @@ public class AuthorCommandHandler :
             .ToListAsync();
         if (entities == null)
         {
-            return new ApiResponse("Records not found!");
+            return new ApiResponse("Error");
         }
         
         entities.ForEach(x =>
@@ -98,7 +98,7 @@ public class AuthorCommandHandler :
 
         });
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
@@ -106,7 +106,7 @@ public class AuthorCommandHandler :
         var entity = await dbContext.Set<Author>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.Name = request.Model.Name;
         entity.Surname = request.Model.Surname;

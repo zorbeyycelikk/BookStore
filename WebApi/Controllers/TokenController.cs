@@ -18,10 +18,10 @@ public class TokenController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<ApiResponse<TokenResponse>> Create1([FromBody] TokenRequest request)
+    public async Task <IActionResult> Create1([FromBody] TokenRequest request)
     {
         var operation = new CreateTokenCommand(request);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
 }

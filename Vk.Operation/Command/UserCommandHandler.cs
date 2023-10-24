@@ -28,6 +28,13 @@ public class UserCommandHandler :
     }
     public async Task<ApiResponse<UserResponse>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
+        User result = dbContext.Set<User>().SingleOrDefault(x => x.UserNumber == request.Model.UserNumber);
+        
+        if (result is not null)
+        {
+            return new ApiResponse<UserResponse>("Error");
+        }
+        
         User mapped = mapper.Map<User>(request.Model);
         
         var md5 = Md5.Create(request.Model.Password.ToUpper());
@@ -49,12 +56,12 @@ public class UserCommandHandler :
         User entity = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.IsActive = false;
         entity.UpdateDate = DateTime.UtcNow; 
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -70,7 +77,7 @@ public class UserCommandHandler :
         });
         dbContext.Set<User>().UpdateRange(entities);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -79,11 +86,11 @@ public class UserCommandHandler :
         User entity = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         dbContext.Set<User>().Remove(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(HardDeleteUserAllCommand request, CancellationToken cancellationToken)
@@ -92,7 +99,7 @@ public class UserCommandHandler :
             .ToListAsync();
         if (entities == null)
         {
-            return new ApiResponse("Records not found!");
+            return new ApiResponse("Error");
         }
         
         entities.ForEach(x =>
@@ -101,7 +108,7 @@ public class UserCommandHandler :
 
         });
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -109,7 +116,7 @@ public class UserCommandHandler :
         var entity = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.FirstName = request.Model.FirstName;
         entity.LastName = request.Model.LastName;

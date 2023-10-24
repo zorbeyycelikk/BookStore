@@ -10,11 +10,12 @@ public class ApiResponse
         return JsonSerializer.Serialize(this);
     }
 
-    public ApiResponse(string message = null)
+    public ApiResponse(string? message = null)
     {
         if (string.IsNullOrWhiteSpace(message))
         {
             Success = true;
+            Message = "Success";
         }
         else
         {
@@ -44,9 +45,9 @@ public class ApiResponse<T>
         Response = data;
         Message = "Success";
     }
-    public ApiResponse(string message)
+    public ApiResponse(string message , bool success = false)
     {
-        Success = false;
+        Success = success;
         Response = default;
         Message = message;
     }

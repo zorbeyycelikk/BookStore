@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -16,7 +15,6 @@ public class SessionUserQueryHandler :
     
     private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly IUnitOfWork unitOfWork;
 
     public SessionUserQueryHandler(IMapper mapper,VkDbContext dbContext)
     {
@@ -30,7 +28,7 @@ public class SessionUserQueryHandler :
         
         if (entity == null)
         {
-            return new ApiResponse<UserResponse>("Record not found!");
+            return new ApiResponse<UserResponse>("Error");
         }
         UserResponse mapped = mapper.Map<UserResponse>(entity);
         return new ApiResponse<UserResponse>(mapped);

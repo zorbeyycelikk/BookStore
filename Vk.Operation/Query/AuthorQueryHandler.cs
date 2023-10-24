@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -15,22 +14,17 @@ public class AuthorQueryHandler :
     IRequestHandler<GetAuthorByIdQuery, ApiResponse<AuthorResponse>>
     
 {
-   // private readonly VkDbContext dbContext;
-   private readonly VkDbContext dbContext;
+    private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly IUnitOfWork unitOfWork;
 
-    public AuthorQueryHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public AuthorQueryHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
-        this.unitOfWork = unitOfWork;
     }
     
     public async Task<ApiResponse<List<AuthorResponse>>> Handle(GetAllAuthorQuery request, CancellationToken cancellationToken)
     {
-        // List<Author> entities = await unitOfWork.AuthorRepository.GetAll(cancellationToken, "Author", "Category");
-       
         List<Author> entities = await dbContext.Set<Author>()
             .ToListAsync(cancellationToken);
        
@@ -40,14 +34,12 @@ public class AuthorQueryHandler :
 
     public async Task<ApiResponse<AuthorResponse>> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
     {
-        // var entity = await unitOfWork.AuthorRepository.GetById(request.Id,cancellationToken,"Author","Category");
-        
         Author entity = await dbContext.Set<Author>()
             .FirstOrDefaultAsync(x => x.Id == request.Id);
         
         if (entity == null)
         {
-            return new ApiResponse<AuthorResponse>("Record not found!");
+            return new ApiResponse<AuthorResponse>("Error");
         }
 
         AuthorResponse mapped = mapper.Map<AuthorResponse>(entity);

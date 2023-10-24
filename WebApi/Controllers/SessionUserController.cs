@@ -24,6 +24,6 @@ public class SessionUserController : ControllerBase
             var id = (User.Identity as ClaimsIdentity).FindFirst("Id").Value;
             var operation = new GetSessionUserByIdQuery(int.Parse(id));
             var result = await mediator.Send(operation);
-            return result.Success ? NoContent() : result.Message == "Record not found" ? NotFound() : BadRequest();
+            return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
 }

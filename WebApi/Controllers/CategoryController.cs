@@ -20,73 +20,73 @@ public class CategoryController : ControllerBase
     
     [HttpGet]
     [Authorize(Roles = "Admin,User")]
-    public  async Task<ApiResponse<List<CategoryResponse>>> GetAll()
+    public  async Task <IActionResult> GetAll()
     { 
             var operation = new GetAllCategoryQuery();
             var result = await mediator.Send(operation);
-            return result;
+            return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpGet("{id}")]
     [Authorize(Roles = "Admin,User")]
-    public async Task<ApiResponse<CategoryResponse>> GetById(int id)
+    public async Task <IActionResult> GetById(int id)
     {
             var operation = new GetCategoryByIdQuery(id);
             var result = await mediator.Send(operation);
-            return result;
+            return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse<CategoryResponse>> Create([FromBody] CategoryCreateRequest request)
+    public async Task <IActionResult> Create([FromBody] CategoryCreateRequest request)
     {
         var operation = new CreateCategoryCommand(request);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> DeleteAll()
+    public async Task <IActionResult> DeleteAll()
     {
         var operation = new DeleteCategoryAllCommand();
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> DeleteById(int id)
+    public async Task <IActionResult> DeleteById(int id)
     {
         var operation = new DeleteCategoryCommand(id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("HardDelete")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> HardDeleteAll()
+    public async Task <IActionResult> HardDeleteAll()
     {
         var operation = new HardDeleteCategoryAllCommand();
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("HardDelete {id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> HardDeleteById(int id)
+    public async Task <IActionResult> HardDeleteById(int id)
     {
         var operation = new HardDeleteCategoryCommand(id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> Update(int id,[FromBody] CategoryUpdateRequest request)
+    public async Task <IActionResult> Update(int id,[FromBody] CategoryUpdateRequest request)
     {
         var operation = new UpdateCategoryCommand(request, id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
 }

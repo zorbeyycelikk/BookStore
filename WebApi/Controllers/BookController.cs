@@ -24,7 +24,7 @@ public class BookController : ControllerBase
     { 
             var operation = new GetAllBookQuery();
             var result = await mediator.Send(operation);
-            return result.Success ? Ok(result.Response) : result.Message == "Record not found" ? NotFound() : BadRequest();
+            return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpGet("{id}")]
@@ -33,61 +33,61 @@ public class BookController : ControllerBase
     {
             var operation = new GetBookByIdQuery(id);
             var result = await mediator.Send(operation);
-            return result.Success ? Ok(result.Response) : result.Message == "Record not found" ? NotFound() : BadRequest();
+            return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse<BookResponse>> Create([FromBody] BookCreateRequest request)
+    public async Task <IActionResult> Create([FromBody] BookCreateRequest request)
     {
         var operation = new CreateBookCommand(request);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Response) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> DeleteAll()
+    public async Task <IActionResult> DeleteAll()
     {
         var operation = new DeleteBookAllCommand();
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> DeleteById(int id)
+    public async Task <IActionResult> DeleteById(int id)
     {
         var operation = new DeleteBookCommand(id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("HardDelete")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> HardDeleteAll()
+    public async Task <IActionResult> HardDeleteAll()
     {
         var operation = new HardDeleteBookAllCommand();
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpDelete("HardDelete {id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> HardDeleteById(int id)
+    public async Task <IActionResult> HardDeleteById(int id)
     {
         var operation = new HardDeleteBookCommand(id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
     
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ApiResponse> Update(int id,[FromBody] BookUpdateRequest request)
+    public async Task <IActionResult> Update(int id,[FromBody] BookUpdateRequest request)
     {
         var operation = new UpdateBookCommand(request, id);
         var result = await mediator.Send(operation);
-        return result;
+        return result.Success ? Ok(result.Message) : result.Message == "Error" ? NotFound() : BadRequest();
     }
 
 }

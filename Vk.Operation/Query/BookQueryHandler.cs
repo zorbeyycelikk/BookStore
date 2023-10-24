@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Vk.Base.Response;
 using Vk.Data.Context;
 using Vk.Data.Domain;
-using Vk.Data.Uow;
 using Vk.Operation.Cqrs;
 using Vk.Schema;
 
@@ -18,13 +17,11 @@ public class BookQueryHandler :
    // private readonly VkDbContext dbContext;
    private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly IUnitOfWork unitOfWork;
 
-    public BookQueryHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public BookQueryHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
-        this.unitOfWork = unitOfWork;
     }
     
     public async Task<ApiResponse<List<BookResponse>>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
@@ -40,15 +37,13 @@ public class BookQueryHandler :
 
     public async Task<ApiResponse<BookResponse>> Handle(GetBookByIdQuery request, CancellationToken cancellationToken)
     {
-        // var entity = await unitOfWork.BookRepository.GetById(request.Id,cancellationToken,"Author","Category");
-        
         Book entity = await dbContext.Set<Book>().Include(x => x.Author)
             .Include(x => x.Category)
             .FirstOrDefaultAsync(x => x.Id == request.Id);
         
         if (entity == null)
         {
-            return new ApiResponse<BookResponse>("Record not found");
+            throw new InvalidOperationException("Error");
         }
 
         BookResponse mapped = mapper.Map<BookResponse>(entity);

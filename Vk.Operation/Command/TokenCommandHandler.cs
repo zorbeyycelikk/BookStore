@@ -33,7 +33,7 @@ public class TokenCommandHandler :
         var entity = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.UserNumber == request.Model.UserNumber, cancellationToken);
         if (entity == null)
         {
-            return new ApiResponse<TokenResponse>("User not found");
+            return new ApiResponse<TokenResponse>("Error");
         }
         
         var md5 = Md5.Create(request.Model.Password.ToUpper());
@@ -43,12 +43,12 @@ public class TokenCommandHandler :
             entity.PasswordRetryCount++;
             await dbContext.SaveChangesAsync(cancellationToken);
 
-            return new ApiResponse<TokenResponse>("Password Not Valid");
+            return new ApiResponse<TokenResponse>("Error");
         }
         
         if (!entity.IsActive)
         {
-            return new ApiResponse<TokenResponse>("User is not active");
+            return new ApiResponse<TokenResponse>("Error");
         }
         
         string token = Token(entity);

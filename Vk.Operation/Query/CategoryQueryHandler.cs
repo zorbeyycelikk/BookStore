@@ -18,19 +18,15 @@ public class CategoryQueryHandler :
    // private readonly VkDbContext dbContext;
    private readonly VkDbContext dbContext;
     private readonly IMapper mapper;
-    private readonly IUnitOfWork unitOfWork;
 
-    public CategoryQueryHandler(IMapper mapper, IUnitOfWork unitOfWork,VkDbContext dbContext)
+    public CategoryQueryHandler(IMapper mapper,VkDbContext dbContext)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
-        this.unitOfWork = unitOfWork;
     }
     
     public async Task<ApiResponse<List<CategoryResponse>>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
     {
-        // List<Category> entities = await unitOfWork.CategoryRepository.GetAll(cancellationToken, "Author", "Category");
-       
         List<Category> entities = await dbContext.Set<Category>()
             .ToListAsync(cancellationToken);
        
@@ -40,14 +36,12 @@ public class CategoryQueryHandler :
 
     public async Task<ApiResponse<CategoryResponse>> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        // var entity = await unitOfWork.CategoryRepository.GetById(request.Id,cancellationToken,"Author","Category");
-        
         Category entity = await dbContext.Set<Category>()
             .FirstOrDefaultAsync(x => x.Id == request.Id);
         
         if (entity == null)
         {
-            return new ApiResponse<CategoryResponse>("Record not found!");
+            return new ApiResponse<CategoryResponse>("Error");
         }
         CategoryResponse mapped = mapper.Map<CategoryResponse>(entity);
         return new ApiResponse<CategoryResponse>(mapped);

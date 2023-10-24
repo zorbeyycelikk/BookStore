@@ -33,7 +33,7 @@ public class  BookCommandHandler :
         
         if (result is not null)
         {
-            throw new InvalidOperationException("Kitap zaten mevcut.");
+            return new ApiResponse<BookResponse>("Error");
         }
         
         Book mapped = mapper.Map<Book>(request.Model);
@@ -43,7 +43,7 @@ public class  BookCommandHandler :
         await dbContext.SaveChangesAsync(cancellationToken);
 
         BookResponse response = mapper.Map<BookResponse>(entity.Entity);
-        return new ApiResponse<BookResponse>(response);
+        return new ApiResponse<BookResponse>(response); // true , "Success"
     }
     
     
@@ -52,12 +52,12 @@ public class  BookCommandHandler :
         Book entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.IsActive = false;
         entity.UpdateDate = DateTime.UtcNow; 
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -67,6 +67,10 @@ public class  BookCommandHandler :
             .Include(x => x.Author)
             .Include(x => x.Category)
             .ToListAsync(cancellationToken);
+
+        if (entities == null)
+        {
+            return new ApiResponse("Error");        }
         
         entities.ForEach(x =>
         {
@@ -75,7 +79,7 @@ public class  BookCommandHandler :
         });
         dbContext.Set<Book>().UpdateRange(entities);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
 
     }
 
@@ -84,11 +88,11 @@ public class  BookCommandHandler :
         Book entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         dbContext.Set<Book>().Remove(entity);
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(HardDeleteBookAllCommand request, CancellationToken cancellationToken)
@@ -98,7 +102,7 @@ public class  BookCommandHandler :
             .ToListAsync();
         if (entities == null)
         {
-            return new ApiResponse("Records not found!");
+            return new ApiResponse("Error");
         }
         
         entities.ForEach(x =>
@@ -107,7 +111,7 @@ public class  BookCommandHandler :
 
         });
         await dbContext.SaveChangesAsync(cancellationToken);
-        return new ApiResponse("Record Found And Delete Succes");
+        return new ApiResponse();
     }
 
     public async Task<ApiResponse> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
@@ -115,7 +119,7 @@ public class  BookCommandHandler :
         var entity = await dbContext.Set<Book>().FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
         if (entity == null)
         {
-            return new ApiResponse("Record not found!");
+            return new ApiResponse("Error");
         }
         entity.BookNumber = request.Model.BookNumber;
         entity.PageCount = request.Model.PageCount;

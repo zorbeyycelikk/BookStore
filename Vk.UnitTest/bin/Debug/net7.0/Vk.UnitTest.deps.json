@@ -13,6 +13,8 @@
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.12",
           "Microsoft.NET.Test.Sdk": "17.6.0",
           "Moq": "4.20.69",
+          "Vk.Base": "1.0.0",
+          "Vk.Data": "1.0.0",
           "Vk.Operation": "1.0.0",
           "WebApi": "1.0.0",
           "coverlet.collector": "3.2.0",
