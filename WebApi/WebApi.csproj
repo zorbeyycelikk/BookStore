@@ -32,8 +32,4 @@
       <ProjectReference Include="..\Vk.Operation\Vk.Operation.csproj" />
       <ProjectReference Include="..\Vk.Schema\Vk.Schema.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="logs\" />
-    </ItemGroup>
 </Project>
